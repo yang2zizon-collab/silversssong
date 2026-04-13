@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eunsong Shin – Portfolio</title>
+
+<style>
+body {
+  margin:0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  overflow:hidden;
+}
+
+.container {
+  display:flex;
+  height:100vh;
+}
+
+.strip {
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition:0.4s cubic-bezier(.77,0,.18,1);
+}
+
+.strip:hover {
+  flex:1.6;
+  filter:brightness(1.15);
+}
+
+/* colors */
+.s1 { background:#1B3A3A; color:#E8F1EF; }
+.s2 { background:#3A7D6B; color:#F0FFF9; }
+.s3 { background:#9FBF8C; color:#1F2A1F; }
+.s4 { background:#E7E3D4; color:#3A3A3A; }
+.s5 { background:#E0B04B; color:#3B2A00; }
+.s6 { background:#C97A40; color:#FFF4E8; }
+.s7 { background:#A63D40; color:#FFECEC; }
+.s8 { background:#6B4C6B; color:#F5E9F5; }
+
+.panel {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.92);
+  color:white;
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:60px 20px;
+  z-index:10;
+  overflow-y:auto;
+}
+
+.close {
+  position:fixed;
+  top:20px;
+  right:30px;
+  font-size:30px;
+  color:white;
+  cursor:pointer;
+  z-index:20;
+  transition:0.2s;
+}
+
+.close:hover {
+  transform:rotate(90deg) scale(1.2);
+}
+
+.panel img {
+  width:220px;
+  margin-bottom:20px;
+  border-radius:10px;
+}
+
+.content {
+  max-width:700px;
+  text-align:left;
+}
+
+.content h3 {
+  margin-top:25px;
+  margin-bottom:5px;
+}
+
+.content p {
+  margin:0;
+  opacity:0.85;
+  line-height:1.6;
+}
+
+.small {
+  font-size:14px;
+  opacity:0.7;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="strip s1" onclick="openPanel('about')">EUNSONG SHIN</div>
+<div class="strip s2" onclick="openPanel('edu')">EDUCATION</div>
+<div class="strip s3" onclick="openPanel('exp')">EXPERIENCE</div>
+<div class="strip s4" onclick="openPanel('festival')">FESTIVALS</div>
+<div class="strip s5">WORKS</div>
+<div class="strip s6">PROJECTS</div>
+<div class="strip s7">SOUND</div>
+<div class="strip s8">CONTACT</div>
+
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="panel">
+  <div class="close" onclick="closeAll()">✕</div>
+  <img src="profile.png">
+  <div class="content">
+    <h2>Composer & Sound Artist</h2>
+    <p>
+    Eunsong Shin is a composer and sound artist whose practice centers on transforming personal perception into sound.
+    Rooted in autobiographical narratives and sensory experience, her work explores listening as a site of memory, embodiment, and spatial awareness.
+    <br><br>
+    She works with electroacoustic media, AI, spatial sound, field recording, and sound installation.
+    </p>
+  </div>
+</div>
+
+<!-- EDUCATION -->
+<div id="edu" class="panel">
+  <div class="close" onclick="closeAll()">✕</div>
+  <div class="content">
+
+    <h3>Korea National University of Arts (K-Arts)</h3>
+    <p>M.M. in Music Technology (Computer Composition)</p>
+    <p>Feb 2022 – Feb 2025</p>
+
+    <h3>Hogeschool voor de Kunsten Utrecht (HKU), Netherlands</h3>
+    <p>Exchange Student, Music & Technology</p>
+    <p>Feb 2024 – Jun 2024</p>
+
+    <h3>Chugye University for the Arts</h3>
+    <p>B.M. in Composition</p>
+    <p>Feb 2017 – Feb 2021</p>
+
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div id="exp" class="panel">
+  <div class="close" onclick="closeAll()">✕</div>
+  <div class="content">
+
+    <h3>Asia Culture Center (ACC)</h3>
+    <p>Sound Lab Researcher</p>
+    <p>May 2025 – Dec 2025 | Gwangju, South Korea</p>
+
+    <h3>National Heritage Media Art Project “Tongjeyeong, Light of Peace”</h3>
+    <p>Music and sound production</p>
+    <p>Sep 26 – Oct 26, 2025 | Tongyeong, South Korea</p>
+
+    <h3>Film “Bright Room”</h3>
+    <p>Sound Director</p>
+    <p>Jan 2025 | South Korea</p>
+
+    <h3>YouTube Channel “The Cheongna”</h3>
+    <p>Sound Director & Music Director</p>
+    <p>Live streaming sound supervision and background music production</p>
+    <p>Jun 2021 – Dec 2021 | South Korea</p>
+
+  </div>
+</div>
+
+<!-- FESTIVALS -->
+<div id="festival" class="panel">
+  <div class="close" onclick="closeAll()">✕</div>
+  <div class="content">
+
+    <h3>ICMC 2026 – International Computer Music Conference</h3>
+    <p>Hamburg, Germany | 2026</p>
+    <p class="small">Hyperfocus (2024), Selected Work</p>
+
+    <h3>WOCMAT (20th Anniversary)</h3>
+    <p>Taiwan | Dec 21, 2024</p>
+    <p class="small">Winner, Phil Winsor Competition</p>
+
+    <h3>ArteScienza Festival</h3>
+    <p>Rome, Italy | Jul 16, 2025</p>
+    <p class="small">Hyperfocus (2024)</p>
+
+    <h3>ICMC 2024</h3>
+    <p>Seoul, South Korea | Jul 8, 2024</p>
+    <p class="small">Real Reality (2023)</p>
+
+    <h3>NYCEMF</h3>
+    <p>USA | Jun 21, 2023</p>
+
+  </div>
+</div>
+
+<script>
+function openPanel(id){
+  document.getElementById(id).style.display = "flex";
+}
+
+function closeAll(){
+  document.getElementById("about").style.display = "none";
+  document.getElementById("edu").style.display = "none";
+  document.getElementById("exp").style.display = "none";
+  document.getElementById("festival").style.display = "none";
+}
+</script>
+
+</body>
+</html>
