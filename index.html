@@ -10,13 +10,20 @@
 body{font-family:'DM Sans',sans-serif;}
 .accordion{width:100%;}
 .block{overflow:hidden;cursor:pointer;}
-.block-header{padding:28px 24px;display:flex;justify-content:space-between;align-items:center;user-select:none;}
+
+.block-header{padding:28px 24px;display:flex;justify-content:space-between;align-items:center;user-select:none;transition:opacity 0.2s;}
+.block-header:hover{opacity:0.85;}
 .block-title{font-family:'Playfair Display',serif;font-size:clamp(32px,7vw,52px);font-weight:900;line-height:1;letter-spacing:-1px;}
-.block-star{font-size:24px;transition:transform 0.3s;flex-shrink:0;margin-left:12px;}
+.block-star{font-size:24px;transition:transform 0.35s;flex-shrink:0;margin-left:12px;}
 .block.open .block-star{transform:rotate(45deg);}
-.block-body{max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1);}
+.block-body{max-height:0;overflow:hidden;transition:max-height 0.55s cubic-bezier(0.4,0,0.2,1);}
 .block.open .block-body{max-height:99999px;}
 .block-inner{padding:0 24px 32px;}
+
+/* fade-in for opened content */
+.block-body .block-inner{opacity:0;transform:translateY(8px);transition:opacity 0.35s 0.1s, transform 0.35s 0.1s;}
+.block.open .block-body .block-inner{opacity:1;transform:translateY(0);}
+
 .row{display:grid;grid-template-columns:110px 1fr;border-top:1px solid rgba(255,255,255,0.2);}
 .row-yr{padding:16px 0;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;opacity:0.7;line-height:1.5;}
 .row-bd{padding:16px 0 16px 16px;border-left:1px solid rgba(255,255,255,0.2);}
@@ -24,7 +31,10 @@ body{font-family:'DM Sans',sans-serif;}
 .row-sub{font-size:12px;opacity:0.72;line-height:1.6;}
 .badge{display:inline-block;padding:2px 8px;border-radius:2px;font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-top:5px;margin-right:4px;border:1.5px solid rgba(255,255,255,0.45);}
 .note{font-size:11px;font-style:italic;margin-top:4px;opacity:0.55;}
+.collab{font-size:11px;margin-top:5px;font-style:italic;}
+.photo-credit{font-size:11px;margin-top:4px;opacity:0.5;}
 
+/* BIO */
 .b0{background:#F06B04;}
 .b0 .block-title,.b0 .block-star{color:#FBB728;}
 .b0-inner{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;}
@@ -41,6 +51,7 @@ body{font-family:'DM Sans',sans-serif;}
 .chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;}
 .b0 .chip{padding:5px 12px;border:1.5px solid rgba(251,183,40,0.4);border-radius:2px;font-size:12px;color:#FBB728;font-weight:500;}
 
+/* EDUCATION */
 .b1{background:#FBB728;}
 .b1 .block-title,.b1 .block-star{color:#F06B04;}
 .b1 .row{border-color:rgba(240,107,4,0.2);}
@@ -49,6 +60,7 @@ body{font-family:'DM Sans',sans-serif;}
 .b1 .row-main{color:#F06B04;}
 .b1 .row-sub{color:#7a4010;}
 
+/* ACTIVITIES */
 .b2{background:#F5ECD2;}
 .b2 .block-title,.b2 .block-star{color:#A1091E;}
 .b2 .row{border-color:rgba(161,9,30,0.15);}
@@ -60,28 +72,31 @@ body{font-family:'DM Sans',sans-serif;}
 .b2 .badge{border-color:rgba(21,112,172,0.5);color:#1570AC;}
 .b2 .winner{border-color:#A1091E;color:#A1091E;}
 
+/* WORKS */
 .b3{background:#2C9FC7;}
 .b3 .block-title,.b3 .block-star{color:#F5ECD2;}
 .work-item{padding:26px 0;border-top:1px solid rgba(245,236,210,0.2);}
-.work-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;font-style:italic;color:#F5ECD2;margin-bottom:4px;}
+.work-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;font-style:italic;color:#F5ECD2;margin-bottom:2px;}
+.work-collab{font-size:12px;color:rgba(245,236,210,0.55);font-style:italic;margin-bottom:10px;}
 .work-year{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(245,236,210,0.5);margin-bottom:12px;}
-.work-desc{font-size:13px;color:rgba(245,236,210,0.8);line-height:1.75;margin-bottom:14px;}
+.work-desc{font-size:13px;color:rgba(245,236,210,0.8);line-height:1.75;margin-bottom:12px;}
 .work-media{font-size:12px;color:rgba(245,236,210,0.55);font-style:italic;margin-bottom:10px;}
-
-/* 썸네일: 모바일은 100%, 데스크탑은 680px */
-.thumb-wrap{position:relative;display:block;width:100%;max-width:680px;padding-top:56%;margin-bottom:14px;border-radius:4px;overflow:hidden;cursor:pointer;text-decoration:none;}
+.work-credit{font-size:11px;color:rgba(245,236,210,0.4);margin-top:6px;font-style:italic;}
+.thumb-wrap{position:relative;display:block;width:100%;max-width:680px;padding-top:56%;margin-bottom:8px;border-radius:4px;overflow:hidden;cursor:pointer;text-decoration:none;}
 .thumb-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
 .thumb-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(0,0,0,0.65);border-radius:50%;display:flex;align-items:center;justify-content:center;}
 .thumb-play svg{width:22px;height:22px;fill:#fff;margin-left:4px;}
 .thumb-wrap:hover .thumb-play{background:rgba(240,107,4,0.85);}
+.work-img{width:100%;max-width:680px;height:auto;border-radius:4px;display:block;margin-bottom:8px;}
 
-/* 사진 이미지도 동일하게 */
-.work-img{width:100%;max-width:680px;height:auto;border-radius:4px;display:block;margin-bottom:14px;}
-
+/* PLACEHOLDER */
 .b4{background:#1570AC;}
 .b4 .block-title,.b4 .block-star{color:#F5ECD2;}
-.b4-ph{text-align:center;padding:40px 0;font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:rgba(245,236,210,0.35);}
+.b4-inner{padding:40px 0;display:flex;flex-direction:column;align-items:flex-start;gap:20px;}
+.dont-btn{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;padding:14px 32px;background:rgba(245,236,210,0.1);border:1.5px solid rgba(245,236,210,0.3);border-radius:4px;color:#F5ECD2;cursor:pointer;transition:background 0.2s;}
+.dont-btn:hover{background:rgba(245,236,210,0.2);}
 
+/* CONTACT */
 .b5{background:#A1091E;}
 .b5 .block-title,.b5 .block-star{color:#FBB728;}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;}
@@ -91,6 +106,16 @@ body{font-family:'DM Sans',sans-serif;}
 .contact-cell:nth-child(n+3){border-top:1px solid rgba(251,183,40,0.2);}
 .c-label{font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(251,183,40,0.55);margin-bottom:6px;}
 .c-val{font-size:14px;font-weight:500;color:#F5ECD2;word-break:break-all;}
+.c-val a{color:#F5ECD2;text-decoration:none;}
+.c-val a:hover{text-decoration:underline;}
+
+/* FLASH */
+@keyframes flash{0%,100%{opacity:1;}50%{opacity:0;}}
+.flashing{animation:flash 0.15s infinite;}
+
+/* FLYING STOP */
+.stop-btn{position:fixed;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:10px 22px;background:#A1091E;color:#FBB728;border:none;border-radius:4px;cursor:pointer;z-index:9999;transition:background 0.15s;}
+.stop-btn:hover{background:#c21025;}
 
 @media(max-width:480px){
   .block-header{padding:22px 18px;}
@@ -108,6 +133,7 @@ body{font-family:'DM Sans',sans-serif;}
 <body>
 <div class="accordion">
 
+<!-- EUNSONG SHIN -->
 <div class="block b0 open" data-block="0">
   <div class="block-header"><div class="block-title">Eunsong Shin</div><div class="block-star">✦</div></div>
   <div class="block-body"><div class="block-inner">
@@ -127,7 +153,7 @@ body{font-family:'DM Sans',sans-serif;}
     </div>
     <div class="skills-div">
       <div class="slabel">Languages</div>
-      <div class="chips"><span class="chip">Korean — Native</span><span class="chip">English — Professional</span></div>
+      <div class="chips"><span class="chip">Korean — Native</span><span class="chip">English (Professional Working Proficiency)</span></div>
       <div class="slabel">Software &amp; Tools</div>
       <div class="chips">
         <span class="chip">Max/MSP/Jitter</span><span class="chip">SuperCollider</span>
@@ -139,6 +165,7 @@ body{font-family:'DM Sans',sans-serif;}
   </div></div>
 </div>
 
+<!-- EDUCATION -->
 <div class="block b1" data-block="1">
   <div class="block-header"><div class="block-title">Education</div><div class="block-star">✦</div></div>
   <div class="block-body"><div class="block-inner">
@@ -148,43 +175,46 @@ body{font-family:'DM Sans',sans-serif;}
   </div></div>
 </div>
 
+<!-- ACTIVITIES -->
 <div class="block b2" data-block="2">
   <div class="block-header"><div class="block-title">Activities</div><div class="block-star">✦</div></div>
   <div class="block-body"><div class="block-inner">
     <div class="row"><div class="row-yr">2026</div><div class="row-bd"><div class="row-main">ICMC 2026 — Hamburg, Germany</div><div class="row-sub">Hyperfocus (2024), Selected Work</div></div></div>
-    <div class="row"><div class="row-yr">May–Dec 2025</div><div class="row-bd"><div class="row-main">Researcher — Asia Culture Center (ACC) Sound Lab, 광주</div><div class="row-sub">Created and presented audiovisual works at ACT Festival · Development of immersive spatial audio content for Ambisonics and WFS</div></div></div>
-    <div class="row"><div class="row-yr">Nov 13–15, 2025</div><div class="row-bd"><div class="row-main">Participatory Sound Installation "Sorimokkori" — Incheon</div><div class="row-sub">Planned and organized exhibition · Be Brave! II (2025) &amp; Sound Trajectory: Misalignment (2025)</div></div></div>
+    <div class="row"><div class="row-yr">May–Dec 2025</div><div class="row-bd"><div class="row-main">Researcher — Asia Culture Center (ACC) Sound Lab, Gwangju</div><div class="row-sub">Created and presented audiovisual works at ACT Festival · Development of immersive spatial audio content for Ambisonics and Wave Field Synthesis (WFS)</div></div></div>
+    <div class="row"><div class="row-yr">Nov 13–15, 2025</div><div class="row-bd"><div class="row-main">Participatory Sound Installation "Sorimokkori" — Incheon</div><div class="row-sub">Planned and organized a participatory sound installation exhibition · Exhibited works Be Brave! II (2025) and Sound Trajectory: Misalignment (2025)</div></div></div>
     <div class="row"><div class="row-yr">Oct 19, 2025</div><div class="row-bd"><div class="row-main">Sonic Nomads — South Korea</div><div class="row-sub">Hidden Sounds (2025), Live Performance</div></div></div>
-    <div class="row"><div class="row-yr">Sep 27, 2025</div><div class="row-bd"><div class="row-main">WeSA Under Lab — South Korea</div><div class="row-sub">Tefillah: Contactless Contact (2025), Performance</div></div></div>
-    <div class="row"><div class="row-yr">Sep 5, 2025</div><div class="row-bd"><div class="row-main">ACT Festival Performance — Gwangju</div><div class="row-sub">Corpus Ambitus: Far (2025), Performance (ACC Sound Lab)</div><div class="note">* Produced through research at the Sound Lab of the National Asian Culture Center.</div></div></div>
-    <div class="row"><div class="row-yr">Sep 5–14, 2025</div><div class="row-bd"><div class="row-main">ACT Festival Exhibition — Gwangju</div><div class="row-sub">Corpus Ambitus: Near (2025), Exhibition (ACC Sound Lab)</div><div class="note">* Produced through research at the Sound Lab of the National Asian Culture Center.</div></div></div>
+    <div class="row"><div class="row-yr">Sep 27, 2025</div><div class="row-bd"><div class="row-main">WeSA Under Lab — South Korea</div><div class="row-sub">Selected Artist · Tefillah: Contactless Contact (2025), Performance</div></div></div>
+    <div class="row"><div class="row-yr">Sep 5, 2025</div><div class="row-bd"><div class="row-main">ACT Festival — Gwangju (Performance)</div><div class="row-sub">Corpus Ambitus: Far (2025), Performance (ACC Sound Lab)</div><div class="note">* Produced through research at the Sound Lab of the National Asian Culture Center.</div></div></div>
+    <div class="row"><div class="row-yr">Sep 5–14, 2025</div><div class="row-bd"><div class="row-main">ACT Festival — Gwangju (Exhibition)</div><div class="row-sub">Corpus Ambitus: Near (2025), Exhibition (ACC Sound Lab)</div><div class="note">* Produced through research at the Sound Lab of the National Asian Culture Center.</div></div></div>
     <div class="row"><div class="row-yr">Jul 16, 2025</div><div class="row-bd"><div class="row-main">ArteScienza Festival — Rome, Italy</div><div class="row-sub">Hyperfocus (2024) for Fixed Media</div></div></div>
     <div class="row"><div class="row-yr">Jul 20, 2025</div><div class="row-bd"><div class="row-main">NOIS//E Festival — Tropea, Italy</div><div class="row-sub">Hyperfocus (2024) for Fixed Media</div></div></div>
-    <div class="row"><div class="row-yr">May 25–27, 2025</div><div class="row-bd"><div class="row-main">APE Camp — Seoul</div><div class="row-sub">Selected Artist</div></div></div>
-    <div class="row"><div class="row-yr">Dec 21, 2024</div><div class="row-bd"><div class="row-main">WOCMAT 20th Anniversary — Taiwan</div><div class="row-sub">Hyperfocus (2024) — Winner, 20th WOCMAT Phil Winsor International Youth Computer Music Competition</div><span class="badge winner">Winner</span></div></div>
+    <div class="row"><div class="row-yr">May 25–27, 2025</div><div class="row-bd"><div class="row-main">APE Camp — Seoul</div><div class="row-sub">Selected Participant</div></div></div>
+    <div class="row"><div class="row-yr">Dec 21, 2024</div><div class="row-bd"><div class="row-main">WOCMAT 20th Anniversary — Taiwan</div><div class="row-sub">Hyperfocus (2024) for Fixed Media · Winner, 20th WOCMAT Phil Winsor International Youth Computer Music Competition</div><span class="badge winner">Winner</span></div></div>
     <div class="row"><div class="row-yr">Dec 18, 2024</div><div class="row-bd"><div class="row-main">Seoul Electroacoustic Music Festival (SEAC)</div><div class="row-sub">Be Brave! (2024), Performance</div></div></div>
     <div class="row"><div class="row-yr">Sep 25, 2024</div><div class="row-bd"><div class="row-main">SEAC 9th New Music Concert</div><div class="row-sub">Increasing (2024), Live Performance (Team ONGs)</div></div></div>
     <div class="row"><div class="row-yr">Sep 4, 2024</div><div class="row-bd"><div class="row-main">KEAMS Fest-M 2024</div><div class="row-sub">Hyperfocus (2024) for Fixed Media · Selected</div></div></div>
     <div class="row"><div class="row-yr">Aug 10, 2024</div><div class="row-bd"><div class="row-main">Eau Mont Jardin — France</div><div class="row-sub">Unplug (2024), Collaborative Sound Installation</div></div></div>
     <div class="row"><div class="row-yr">Jul 8, 2024</div><div class="row-bd"><div class="row-main">ICMC 2024 — Seoul</div><div class="row-sub">Real Reality (2023) for Two Violins &amp; Live Electronics</div></div></div>
-    <div class="row"><div class="row-yr">Jun 14, 2024</div><div class="row-bd"><div class="row-main">Unplug: Interaction Performances — Utrecht</div><div class="row-sub">Unplug (2024), Collaborative Sound Installation</div></div></div>
-    <div class="row"><div class="row-yr">Mar 27, 2024</div><div class="row-bd"><div class="row-main">Spatialisation Concert — Amsterdam</div><div class="row-sub">Hyperfocus (2024) for Wave Field Synthesis System</div></div></div>
+    <div class="row"><div class="row-yr">Jun 14, 2024</div><div class="row-bd"><div class="row-main">Unplug: Interaction Performances — Utrecht, Netherlands</div><div class="row-sub">Unplug (2024), Sound Installation Exhibition</div></div></div>
+    <div class="row"><div class="row-yr">Mar 27, 2024</div><div class="row-bd"><div class="row-main">Spatialisation Concert — Amsterdam, Netherlands</div><div class="row-sub">Hyperfocus (2024) for Wave Field Synthesis System</div></div></div>
     <div class="row"><div class="row-yr">Nov 12, 2023</div><div class="row-bd"><div class="row-main">Daegu International Computer Music Festival</div><div class="row-sub">Engrave (2023)</div></div></div>
-    <div class="row"><div class="row-yr">Jun 21, 2023</div><div class="row-bd"><div class="row-main">NYCEMF — New York City</div><div class="row-sub">Goal Setting &amp; Carrying On (2021)</div></div></div>
+    <div class="row"><div class="row-yr">Jun 21, 2023</div><div class="row-bd"><div class="row-main">NYCEMF — New York City, USA</div><div class="row-sub">Goal Setting &amp; Carrying On (2021)</div></div></div>
     <div class="row"><div class="row-yr">May 14, 2023</div><div class="row-bd"><div class="row-main">KEAMS Fest-M 2023</div><div class="row-sub">Almost Equal (2022)</div></div></div>
-    <div class="row"><div class="row-yr">Oct 2, 2022</div><div class="row-bd"><div class="row-main">Howling Live Concert</div><div class="row-sub">Multiple works performed</div></div></div>
+    <div class="row"><div class="row-yr">Oct 2, 2022</div><div class="row-bd"><div class="row-main">Howling Live Concert — South Korea</div><div class="row-sub">Multiple works performed</div></div></div>
     <div class="row"><div class="row-yr">Nov 11, 2022</div><div class="row-bd"><div class="row-main">Daegu International Computer Music Festival</div><div class="row-sub">Zing (2020)</div></div></div>
     <div class="row"><div class="row-yr">May 15, 2022</div><div class="row-bd"><div class="row-main">KEAMS Fest-M 2022</div><div class="row-sub">Goal Setting &amp; Carrying On (2021)</div></div></div>
     <div class="row"><div class="row-yr">Dec 18, 2021</div><div class="row-bd"><div class="row-main">SEAC Electroacoustic Festival</div><div class="row-sub">Goal Setting &amp; Carrying On (2021)</div></div></div>
   </div></div>
 </div>
 
+<!-- WORKS -->
 <div class="block b3" data-block="3">
   <div class="block-header"><div class="block-title">Works</div><div class="block-star">✦</div></div>
   <div class="block-body"><div class="block-inner">
 
     <div class="work-item">
       <div class="work-title">Hidden Sounds</div>
+      <div class="work-collab">Eunsong Shin × Bokyung Shin</div>
       <div class="work-year">2025</div>
       <a class="thumb-wrap" href="https://youtu.be/kuQfp77XUS8" target="_blank">
         <img src="https://img.youtube.com/vi/kuQfp77XUS8/hqdefault.jpg" alt="Hidden Sounds">
@@ -196,6 +226,7 @@ body{font-family:'DM Sans',sans-serif;}
 
     <div class="work-item">
       <div class="work-title">Tefillah: Contactless Contact</div>
+      <div class="work-collab">Eunsong Shin × Teal Choi</div>
       <div class="work-year">2025</div>
       <a class="thumb-wrap" href="https://youtu.be/1emSLXdqaOM" target="_blank">
         <img src="https://img.youtube.com/vi/1emSLXdqaOM/hqdefault.jpg" alt="Tefillah">
@@ -207,8 +238,10 @@ body{font-family:'DM Sans',sans-serif;}
 
     <div class="work-item">
       <div class="work-title">Corpus Ambitus — Far</div>
+      <div class="work-collab">Sound Lab: Byung-moo Lee, Hunmin Park, Eunsong Shin, Junho Jang, Hyewon Jung</div>
       <div class="work-year">2025</div>
       <img src="corpus-far.jpg" alt="Corpus Ambitus Far" class="work-img" onerror="this.style.display='none'">
+      <p class="work-credit">Photo: National Asian Culture Center Sound Lab</p>
       <p class="work-desc">Corpus Ambitus — Far is a performance-based work that extends the Asia Culture Center (ACC) Sound Lab's ongoing research project The Future of Listening, initiated in 2023, and its broader Body series. The piece reexamines human sensory perception and identity amid rapidly evolving technological listening environments.</p>
       <p class="work-desc">The work focuses on the blurring and reversal of boundaries between the subject of perception (the body) and the object (the environment) in a future society. Technology extends the body beyond its physical limitations, while our senses begin to perceive multiple spatial layers simultaneously—real and virtual, interior and exterior. On stage, four virtual spaces unfold, each with distinct scales and atmospheres. The sound is deliberately misaligned with the visual information, intentionally destabilizing sensory balance. Surrounding the stage and audience, a main screen and an eight-channel speaker system construct an audiovisual environment combining bodily imagery with variations of corporeal sound.</p>
       <p class="work-desc">The dancers' movements traverse between the real and the virtual, visualizing sensory confusion, expansion, and estrangement from one's own body. In this process, "listening" shifts beyond passive hearing and becomes a medium for reexamining the relationships between sensation, environment, and technology.</p>
@@ -216,8 +249,10 @@ body{font-family:'DM Sans',sans-serif;}
 
     <div class="work-item">
       <div class="work-title">Corpus Ambitus — Near</div>
+      <div class="work-collab">Sound Lab: Byung-moo Lee, Hunmin Park, Eunsong Shin, Junho Jang, Hyewon Jung</div>
       <div class="work-year">2025</div>
       <img src="corpus-near.jpg" alt="Corpus Ambitus Near" class="work-img" onerror="this.style.display='none'">
+      <p class="work-credit">Photo: National Asian Culture Center Sound Lab</p>
       <p class="work-desc">Based on the performance Corpus Ambitus: Far, Corpus Ambitus: Near transforms the piece into an interactive installation that lets visitors directly experience the relationship between body and technology. Developed within the research framework The Futures of Listening, it invites audiences to explore sound experimentation and shifts in body–space perception at close range, turning the exhibition space into a sensory laboratory.</p>
       <p class="work-desc">With minimal gestures — like moving a finger — visitors alter both video and sound in real time. The space is equipped with a 32-channel sound system. The sound resonates with or diverges from visual information, shifting the audience's 'position in sound'. Beyond mere interaction, this unfolds as an act of 'restructuring space through the body.'</p>
       <p class="work-desc">In this way, the visitor ceases to be a passive observer and becomes part of the work–technology system. The piece also investigates how a performance-based work can be reanimated in "static" installation form — reviving auditory and bodily perception within the gallery and prompting philosophical questions about listening, embodiment, and agency at the nexus of art and technology.</p>
@@ -269,8 +304,10 @@ body{font-family:'DM Sans',sans-serif;}
 
     <div class="work-item">
       <div class="work-title">Unplug</div>
+      <div class="work-collab">@coenkonings, @sc.jaine</div>
       <div class="work-year">2024</div>
       <img src="unplug.jpg" alt="Unplug" class="work-img" onerror="this.style.display='none'">
+      <p class="work-credit">Photo: @blonkerstudio</p>
       <p class="work-desc">A digitized world, wherein your attention is a commodity. Focus is absorbed, and our senses overstimulated. You are the product. Remind yourself to unplug.</p>
     </div>
 
@@ -354,25 +391,115 @@ body{font-family:'DM Sans',sans-serif;}
   </div></div>
 </div>
 
+<!-- PLACEHOLDER -->
 <div class="block b4" data-block="4">
   <div class="block-header"><div class="block-title">— — —</div><div class="block-star">✦</div></div>
   <div class="block-body"><div class="block-inner">
-    <div class="b4-ph">Coming soon...</div>
+    <div class="b4-inner">
+      <button class="dont-btn" id="dontBtn">Don't click</button>
+    </div>
   </div></div>
 </div>
 
+<!-- CONTACT -->
 <div class="block b5" data-block="5">
   <div class="block-header"><div class="block-title">Contact</div><div class="block-star">✦</div></div>
   <div class="block-body"><div class="block-inner">
     <div class="contact-grid">
-      <div class="contact-cell"><div class="c-label">Email</div><div class="c-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dba8bea8b9bab9a29bb5baadbea9f5b8b4b6">[email&#160;protected]</a></div></div>
-      <div class="contact-cell"><div class="c-label">Instagram</div><div class="c-val">@comp._.silversssong</div></div>
+      <div class="contact-cell"><div class="c-label">Email</div><div class="c-val">sesbaby@naver.com</div></div>
+      <div class="contact-cell"><div class="c-label">Instagram</div><div class="c-val"><a href="https://www.instagram.com/comp._.silversssong/" target="_blank">@comp._.silversssong</a></div></div>
       <div class="contact-cell"><div class="c-label">Location</div><div class="c-val">Incheon / Seoul, Korea</div></div>
     </div>
   </div></div>
 </div>
 
 </div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" defer></script><script>
-document.querySelectorAll('.block').forEach(block=>{
-  block.querySelector('.block-header').addEventL
+
+<script>
+// Accordion
+document.querySelectorAll('.block').forEach(block => {
+  block.querySelector('.block-header').addEventListener('click', () => {
+    const isOpen = block.classList.contains('open');
+    document.querySelectorAll('.block').forEach(b => b.classList.remove('open'));
+    if (!isOpen) block.classList.add('open');
+  });
+});
+
+// Don't click chaos
+const dontBtn = document.getElementById('dontBtn');
+let chaosActive = false;
+let stopBtn = null;
+let flyInterval = null;
+let flashInterval = null;
+let audioCtx = null;
+let audioSource = null;
+
+function startChaos() {
+  if (chaosActive) return;
+  chaosActive = true;
+
+  // Web Audio API — simple noise burst since we can't load external wav
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  function playNoise() {
+    if (!chaosActive) return;
+    const bufferSize = audioCtx.sampleRate * 0.4;
+    const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) data[i] = (Math.random() * 2 - 1) * 0.3;
+    const src = audioCtx.createBufferSource();
+    src.buffer = buffer;
+    // add some resonance
+    const filter = audioCtx.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.frequency.value = 200 + Math.random() * 800;
+    src.connect(filter);
+    filter.connect(audioCtx.destination);
+    src.start();
+    src.onended = () => { if (chaosActive) playNoise(); };
+  }
+  playNoise();
+
+  // Flash body
+  flashInterval = setInterval(() => {
+    const colors = ['#F06B04','#FBB728','#F5ECD2','#2C9FC7','#1570AC','#A1091E'];
+    document.body.style.background = colors[Math.floor(Math.random() * colors.length)];
+  }, 120);
+
+  // Flying stop button
+  stopBtn = document.createElement('button');
+  stopBtn.className = 'stop-btn';
+  stopBtn.textContent = 'Stop';
+  document.body.appendChild(stopBtn);
+
+  let vx = (Math.random() * 4 + 3) * (Math.random() < 0.5 ? 1 : -1);
+  let vy = (Math.random() * 4 + 3) * (Math.random() < 0.5 ? 1 : -1);
+  let x = window.innerWidth / 2;
+  let y = window.innerHeight / 2;
+
+  flyInterval = setInterval(() => {
+    x += vx;
+    y += vy;
+    if (x < 0 || x > window.innerWidth - 80) vx *= -1;
+    if (y < 0 || y > window.innerHeight - 44) vy *= -1;
+    stopBtn.style.left = x + 'px';
+    stopBtn.style.top = y + 'px';
+  }, 16);
+
+  stopBtn.addEventListener('click', stopChaos);
+  dontBtn.textContent = "I said don't...";
+}
+
+function stopChaos() {
+  chaosActive = false;
+  clearInterval(flashInterval);
+  clearInterval(flyInterval);
+  document.body.style.background = '';
+  if (stopBtn) { stopBtn.remove(); stopBtn = null; }
+  if (audioCtx) { audioCtx.close(); audioCtx = null; }
+  dontBtn.textContent = "Don't click";
+}
+
+dontBtn.addEventListener('click', startChaos);
+</script>
+</body>
+</html>
