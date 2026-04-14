@@ -10,16 +10,16 @@
 body{font-family:'DM Sans',sans-serif;}
 .accordion{width:100%;}
 .block{overflow:hidden;cursor:pointer;}
-.block-header{padding:36px 40px;display:flex;justify-content:space-between;align-items:center;user-select:none;}
-.block-title{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;line-height:1;letter-spacing:-1px;}
-.block-star{font-size:28px;transition:transform 0.3s;}
+.block-header{padding:28px 24px;display:flex;justify-content:space-between;align-items:center;user-select:none;}
+.block-title{font-family:'Playfair Display',serif;font-size:clamp(32px,7vw,52px);font-weight:900;line-height:1;letter-spacing:-1px;}
+.block-star{font-size:24px;transition:transform 0.3s;flex-shrink:0;margin-left:12px;}
 .block.open .block-star{transform:rotate(45deg);}
 .block-body{max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1);}
 .block.open .block-body{max-height:99999px;}
-.block-inner{padding:0 40px 36px;}
-.row{display:grid;grid-template-columns:140px 1fr;border-top:1px solid rgba(255,255,255,0.2);}
-.row-yr{padding:18px 0;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;opacity:0.7;line-height:1.5;}
-.row-bd{padding:18px 0 18px 24px;border-left:1px solid rgba(255,255,255,0.2);}
+.block-inner{padding:0 24px 32px;}
+.row{display:grid;grid-template-columns:110px 1fr;border-top:1px solid rgba(255,255,255,0.2);}
+.row-yr{padding:16px 0;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;opacity:0.7;line-height:1.5;}
+.row-bd{padding:16px 0 16px 16px;border-left:1px solid rgba(255,255,255,0.2);}
 .row-main{font-size:14px;font-weight:500;margin-bottom:3px;}
 .row-sub{font-size:12px;opacity:0.72;line-height:1.6;}
 .badge{display:inline-block;padding:2px 8px;border-radius:2px;font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-top:5px;margin-right:4px;border:1.5px solid rgba(255,255,255,0.45);}
@@ -27,25 +27,26 @@ body{font-family:'DM Sans',sans-serif;}
 
 .b0{background:#F06B04;}
 .b0 .block-title,.b0 .block-star{color:#FBB728;}
-.b0-inner{display:flex;gap:36px;align-items:flex-start;}
-.b0-photo{width:160px;height:160px;border-radius:4px;object-fit:cover;flex-shrink:0;border:2px solid rgba(251,183,40,0.4);}
-.b0-photo-placeholder{width:160px;height:160px;border-radius:4px;flex-shrink:0;border:2px dashed rgba(251,183,40,0.4);display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(251,183,40,0.5);text-align:center;}
-.bio-name{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:#FBB728;margin-bottom:6px;}
-.bio-role{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(245,236,210,0.7);margin-bottom:16px;}
+.b0-inner{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;}
+.b0-photo{width:140px;height:140px;border-radius:4px;object-fit:cover;flex-shrink:0;border:2px solid rgba(251,183,40,0.4);}
+.b0-photo-placeholder{width:140px;height:140px;border-radius:4px;flex-shrink:0;border:2px dashed rgba(251,183,40,0.4);display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(251,183,40,0.5);text-align:center;}
+.b0-text{flex:1;min-width:200px;}
+.bio-name{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:#FBB728;margin-bottom:6px;}
+.bio-role{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(245,236,210,0.7);margin-bottom:14px;}
 .bio-text{font-size:14px;line-height:1.8;color:#F5ECD2;margin-bottom:12px;}
 .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
-.b0 .tag{padding:5px 14px;border:1.5px solid #FBB728;border-radius:2px;font-size:12px;color:#FBB728;font-weight:500;}
+.b0 .tag{padding:5px 12px;border:1.5px solid #FBB728;border-radius:2px;font-size:12px;color:#FBB728;font-weight:500;}
 .skills-div{margin-top:28px;padding-top:24px;border-top:1px solid rgba(251,183,40,0.3);}
 .slabel{font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(245,236,210,0.55);margin-bottom:10px;}
 .chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;}
-.b0 .chip{padding:5px 13px;border:1.5px solid rgba(251,183,40,0.4);border-radius:2px;font-size:12px;color:#FBB728;font-weight:500;}
+.b0 .chip{padding:5px 12px;border:1.5px solid rgba(251,183,40,0.4);border-radius:2px;font-size:12px;color:#FBB728;font-weight:500;}
 
 .b1{background:#FBB728;}
-.b1 .block-title,.b1 .block-star{color:#A1091E;}
-.b1 .row{border-color:rgba(161,9,30,0.2);}
-.b1 .row-bd{border-color:rgba(161,9,30,0.2);}
-.b1 .row-yr{color:#A1091E;opacity:1;}
-.b1 .row-main{color:#A1091E;}
+.b1 .block-title,.b1 .block-star{color:#F06B04;}
+.b1 .row{border-color:rgba(240,107,4,0.2);}
+.b1 .row-bd{border-color:rgba(240,107,4,0.2);}
+.b1 .row-yr{color:#F06B04;opacity:1;}
+.b1 .row-main{color:#F06B04;}
 .b1 .row-sub{color:#7a4010;}
 
 .b2{background:#F5ECD2;}
@@ -66,13 +67,16 @@ body{font-family:'DM Sans',sans-serif;}
 .work-year{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(245,236,210,0.5);margin-bottom:12px;}
 .work-desc{font-size:13px;color:rgba(245,236,210,0.8);line-height:1.75;margin-bottom:14px;}
 .work-media{font-size:12px;color:rgba(245,236,210,0.55);font-style:italic;margin-bottom:10px;}
-.work-no-link{font-size:12px;color:rgba(245,236,210,0.35);font-style:italic;}
-.thumb-wrap{position:relative;display:block;width:520px;padding-top:292px;margin-bottom:14px;border-radius:4px;overflow:hidden;cursor:pointer;text-decoration:none;}
+
+/* 썸네일: 모바일은 100%, 데스크탑은 680px */
+.thumb-wrap{position:relative;display:block;width:100%;max-width:680px;padding-top:56%;margin-bottom:14px;border-radius:4px;overflow:hidden;cursor:pointer;text-decoration:none;}
 .thumb-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
-.thumb-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;background:rgba(0,0,0,0.65);border-radius:50%;display:flex;align-items:center;justify-content:center;}
-.thumb-play svg{width:18px;height:18px;fill:#fff;margin-left:3px;}
+.thumb-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(0,0,0,0.65);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.thumb-play svg{width:22px;height:22px;fill:#fff;margin-left:4px;}
 .thumb-wrap:hover .thumb-play{background:rgba(240,107,4,0.85);}
-.work-photo-placeholder{width:100%;height:120px;border:1.5px dashed rgba(245,236,210,0.25);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:12px;color:rgba(245,236,210,0.3);margin-bottom:14px;}
+
+/* 사진 이미지도 동일하게 */
+.work-img{width:100%;max-width:680px;height:auto;border-radius:4px;display:block;margin-bottom:14px;}
 
 .b4{background:#1570AC;}
 .b4 .block-title,.b4 .block-star{color:#F5ECD2;}
@@ -81,12 +85,24 @@ body{font-family:'DM Sans',sans-serif;}
 .b5{background:#A1091E;}
 .b5 .block-title,.b5 .block-star{color:#FBB728;}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;}
-.contact-cell{padding:22px 0;}
-.contact-cell:nth-child(odd){padding-right:24px;border-right:1px solid rgba(251,183,40,0.2);}
-.contact-cell:nth-child(even){padding-left:24px;}
+.contact-cell{padding:20px 0;}
+.contact-cell:nth-child(odd){padding-right:20px;border-right:1px solid rgba(251,183,40,0.2);}
+.contact-cell:nth-child(even){padding-left:20px;}
 .contact-cell:nth-child(n+3){border-top:1px solid rgba(251,183,40,0.2);}
 .c-label{font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(251,183,40,0.55);margin-bottom:6px;}
-.c-val{font-size:14px;font-weight:500;color:#F5ECD2;}
+.c-val{font-size:14px;font-weight:500;color:#F5ECD2;word-break:break-all;}
+
+@media(max-width:480px){
+  .block-header{padding:22px 18px;}
+  .block-inner{padding:0 18px 28px;}
+  .row{grid-template-columns:80px 1fr;}
+  .row-yr{font-size:10px;}
+  .contact-grid{grid-template-columns:1fr;}
+  .contact-cell:nth-child(odd){padding-right:0;border-right:none;border-bottom:1px solid rgba(251,183,40,0.2);}
+  .contact-cell:nth-child(even){padding-left:0;}
+  .contact-cell:nth-child(n+3){border-top:none;}
+  .contact-cell{padding:16px 0;}
+}
 </style>
 </head>
 <body>
@@ -98,7 +114,7 @@ body{font-family:'DM Sans',sans-serif;}
     <div class="b0-inner">
       <img src="profile.png" alt="Eunsong Shin" class="b0-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
       <div class="b0-photo-placeholder" style="display:none;">profile.png</div>
-      <div>
+      <div class="b0-text">
         <div class="bio-name">Composer &amp; Sound Artist</div>
         <div class="bio-role">Seoul / Incheon, South Korea</div>
         <p class="bio-text">Eunsong Shin's practice centers on transforming personal perception into sound. Rooted in autobiographical narratives and sensory experience, her work explores listening as a site of memory, embodiment, and spatial awareness.</p>
@@ -174,9 +190,8 @@ body{font-family:'DM Sans',sans-serif;}
         <img src="https://img.youtube.com/vi/kuQfp77XUS8/hqdefault.jpg" alt="Hidden Sounds">
         <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
       </a>
-      <p class="work-desc">Cities such as Seoul exist within constantly shifting soundscapes. What we commonly refer to as “urban sound” usually consists of the audible center of the city: traffic noise, music flowing from commercial buildings, fragments of conversation—sounds that are familiar, visible, and easily legible within everyday life. Yet beneath this surface lies another acoustic layer: spaces and sounds that are marginalized, excluded, or deliberately rendered invisible.
-This project is based on field recordings collected from sites in Seoul often labeled as “undesirable facilities”—waste incineration plants, areas scheduled for redevelopment, and public cemeteries. These spaces are frequently associated with discomfort, death, waste, or poverty, and are shaped by social stigma and prejudice. As they are pushed to the periphery of urban consciousness, their sounds are likewise reduced to mere “noise,” muted and suppressed within the dominant narrative of the city.
-Rather than treating these recordings as neutral environmental sound, this work approaches them as acoustic testimonies. Each recorded site carries traces of social relations, emotional residues, and systems of regulation embedded within the urban fabric. By reconfiguring and recontextualizing these marginalized sonic materials, the project seeks to expose the hierarchical structures that organize the city and to invite audiences to encounter an unfamiliar face of the urban environment.</p>
+      <p class="work-desc">Cities such as Seoul exist within constantly shifting soundscapes. What we commonly refer to as "urban sound" usually consists of the audible center of the city: traffic noise, music flowing from commercial buildings, fragments of conversation—sounds that are familiar, visible, and easily legible within everyday life. Yet beneath this surface lies another acoustic layer: spaces and sounds that are marginalized, excluded, or deliberately rendered invisible.</p>
+      <p class="work-desc">This project is based on field recordings collected from sites in Seoul often labeled as "undesirable facilities"—waste incineration plants, areas scheduled for redevelopment, and public cemeteries. Rather than treating these recordings as neutral environmental sound, this work approaches them as acoustic testimonies. By reconfiguring and recontextualizing these marginalized sonic materials, the project seeks to expose the hierarchical structures that organize the city and to invite audiences to encounter an unfamiliar face of the urban environment.</p>
     </div>
 
     <div class="work-item">
@@ -186,33 +201,24 @@ Rather than treating these recordings as neutral environmental sound, this work 
         <img src="https://img.youtube.com/vi/1emSLXdqaOM/hqdefault.jpg" alt="Tefillah">
         <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
       </a>
-      <p class="work-desc">Tefillah: Contactless Contact is not a prayer meant to convey information, but one that functions as a form of language prior to meaning. It operates as a mode of communication without a specific addressee—an act of “relation-making.”
-Prayer, even in the absence of a defined recipient, takes the form of speech directed toward something or someone, while simultaneously holding the potential for open connection with anyone. This work explores prayer as a relational act: a way of speaking that resonates beyond directionality, a structure of relation formed within absence, and a space where the linguistic musicality of repetition, recitation, and murmuring comes to the fore.</p>
+      <p class="work-desc">Tefillah: Contactless Contact is not a prayer meant to convey information, but one that functions as a form of language prior to meaning. It operates as a mode of communication without a specific addressee—an act of "relation-making."</p>
+      <p class="work-desc">Prayer, even in the absence of a defined recipient, takes the form of speech directed toward something or someone, while simultaneously holding the potential for open connection with anyone. This work explores prayer as a relational act: a way of speaking that resonates beyond directionality, a structure of relation formed within absence, and a space where the linguistic musicality of repetition, recitation, and murmuring comes to the fore.</p>
     </div>
 
     <div class="work-item">
       <div class="work-title">Corpus Ambitus — Far</div>
       <div class="work-year">2025</div>
-      <img src="corpus-far.jpg" alt="Corpus Ambitus Far" style="width:520px;height:auto;border-radius:4px;display:block;margin-bottom:14px;" onerror="this.style.display='none'">
-      <p class="work-desc">Corpus Ambitus - Far is a performance-based work that extends the Asia Culture Center (ACC) Sound Lab’s ongoing research project The Future of Listening, initiated in 2023, and its broader Body series. The piece reexamines human sensory perception and identity amid rapidly evolving technological listening environments.
-The work focuses on the blurring and reversal of boundaries between the subject of perception (the body) and the object (the environment) in a future society. Technology extends the body beyond its physical limitations, while our senses begin to perceive multiple spatial layers simultaneously—real and virtual, interior and exterior. In this context, technology draws environments into personal spaces and screens, allowing us to observe and partially control multiple environments. Algorithms reconstruct relationships, creating paradoxical hierarchies and generating familiar virtual landscapes that evoke nostalgia.
-On stage, four virtual spaces unfold, each with distinct scales and atmospheres. Although they resemble reduced or miniature environments, the sound is deliberately misaligned with the visual information, intentionally destabilizing sensory balance. Surrounding the stage and audience, a main screen and an eight-channel speaker system construct an audiovisual environment combining bodily imagery with variations of corporeal sound.
-The dancers’ movements traverse between the real and the virtual, visualizing sensory confusion, expansion, and estrangement from one’s own body. In this process, “listening” shifts beyond passive hearing and becomes a medium for reexamining the relationships between sensation, environment, and technology.
-As the culmination of ACC Sound Lab’s multi-year experimentation and research in sound technology, the work will premiere as a performance at ACT Festival 2025. The audience encounters the fluidly reconfigured boundaries of the body mediated by technology, and the emerging new sensory awareness that arises within that space.</p>
+      <img src="corpus-far.jpg" alt="Corpus Ambitus Far" class="work-img" onerror="this.style.display='none'">
+      <p class="work-desc">Corpus Ambitus — Far is a performance-based work that extends the Asia Culture Center (ACC) Sound Lab's ongoing research project The Future of Listening, initiated in 2023, and its broader Body series. The piece reexamines human sensory perception and identity amid rapidly evolving technological listening environments.</p>
+      <p class="work-desc">The work focuses on the blurring and reversal of boundaries between the subject of perception (the body) and the object (the environment) in a future society. Technology extends the body beyond its physical limitations, while our senses begin to perceive multiple spatial layers simultaneously—real and virtual, interior and exterior. On stage, four virtual spaces unfold, each with distinct scales and atmospheres. The sound is deliberately misaligned with the visual information, intentionally destabilizing sensory balance. Surrounding the stage and audience, a main screen and an eight-channel speaker system construct an audiovisual environment combining bodily imagery with variations of corporeal sound.</p>
       <p class="work-desc">The dancers' movements traverse between the real and the virtual, visualizing sensory confusion, expansion, and estrangement from one's own body. In this process, "listening" shifts beyond passive hearing and becomes a medium for reexamining the relationships between sensation, environment, and technology.</p>
     </div>
 
     <div class="work-item">
       <div class="work-title">Corpus Ambitus — Near</div>
       <div class="work-year">2025</div>
-      <img src="corpus-near.jpg" alt="Corpus Ambitus Near" style="width:520px;height:auto;border-radius:4px;display:block;margin-bottom:14px;" onerror="this.style.display='none'">
-      <p class="work-desc">Based on the performance Corpus Ambitus: Far, Corpus Ambitus: Near transforms the piece into an interactive installation that lets visitors directly experience the relationship between body and technology.
-
-Developed within the research framework The Futures of Listening, it invites audiences to explore sound experimentation and shifts in body–space perception at close range, turning the exhibition space into a sensory laboratory.
-
-With minimal gestures — like moving a finger — visitors alter both video and sound in real time. The space is equipped with a 32-channel (multichannel) sound system. The sound resonates with or diverges from visual information, shifting the audience’s ‘position in sound’. Beyond mere interaction, this unfolds as an act of ‘restructuring space through the body.’
-
-In this way, the visitor ceases to be a passive observer and becomes part of the work–technology system. The piece also investigates how a performance-based work can be reanimated in “static” installation form — reviving auditory and bodily perception within the gallery and prompting philosophical questions about listening, embodiment, and agency at the nexus of art and technology.</p>
+      <img src="corpus-near.jpg" alt="Corpus Ambitus Near" class="work-img" onerror="this.style.display='none'">
+      <p class="work-desc">Based on the performance Corpus Ambitus: Far, Corpus Ambitus: Near transforms the piece into an interactive installation that lets visitors directly experience the relationship between body and technology. Developed within the research framework The Futures of Listening, it invites audiences to explore sound experimentation and shifts in body–space perception at close range, turning the exhibition space into a sensory laboratory.</p>
       <p class="work-desc">With minimal gestures — like moving a finger — visitors alter both video and sound in real time. The space is equipped with a 32-channel sound system. The sound resonates with or diverges from visual information, shifting the audience's 'position in sound'. Beyond mere interaction, this unfolds as an act of 'restructuring space through the body.'</p>
       <p class="work-desc">In this way, the visitor ceases to be a passive observer and becomes part of the work–technology system. The piece also investigates how a performance-based work can be reanimated in "static" installation form — reviving auditory and bodily perception within the gallery and prompting philosophical questions about listening, embodiment, and agency at the nexus of art and technology.</p>
     </div>
@@ -225,10 +231,8 @@ In this way, the visitor ceases to be a passive observer and becomes part of the
         <img src="https://img.youtube.com/vi/R9FzmYfjuw4/hqdefault.jpg" alt="Be Brave II">
         <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
       </a>
-      <p class="work-desc">Single-channel video, eight-channel sound, sixteen toy birds
-Be Brave! II is an expanded exhibition version of the performance work Be Brave! (2024).
-The toy parrots move beyond their original functional roles, displaying distinct reactions and movements as they gradually transform into autonomous presences. The audience’s intervention is not a simple act of control, but part of the process through which these entities begin to awaken to a sense of agency.
-Once operating through repetition and imitation, the toys slowly seek out their own voices. Through moments of transformation, Be Brave! II traces how speaking and moving figures break away from assigned roles and move toward forms of expression of their own making.</p>
+      <p class="work-desc">Be Brave! II is an expanded exhibition version of the performance work Be Brave! (2024). The toy parrots move beyond their original functional roles, displaying distinct reactions and movements as they gradually transform into autonomous presences. The audience's intervention is not a simple act of control, but part of the process through which these entities begin to awaken to a sense of agency.</p>
+      <p class="work-desc">Once operating through repetition and imitation, the toys slowly seek out their own voices. Through moments of transformation, Be Brave! II traces how speaking and moving figures break away from assigned roles and move toward forms of expression of their own making.</p>
     </div>
 
     <div class="work-item">
@@ -238,9 +242,8 @@ Once operating through repetition and imitation, the toys slowly seek out their 
         <img src="https://img.youtube.com/vi/5AzOl08ucBE/hqdefault.jpg" alt="Sound Trajectories">
         <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
       </a>
-      <p class="work-desc">A miniature car moving along a rail generates a single trajectory of sound through a small speaker. As it moves, the sound continuously circulates and shifts within the space. The sound does not exist in a fixed form; it is perceived differently depending on movement and position.
-According to where the audience stands and how the miniature car travels, the timbre and direction change, and even the same sound is transformed into distinct auditory experiences. The repeated motion forms a steady rhythm, yet subtle variations emerge over time. Within these shifts, the sound overlaps and misaligns, reorganizing itself into new configurations in space.
-Sound Trajectory: Misalignment reveals how sound transforms and is perceived over time through repetition and difference.</p>
+      <p class="work-desc">A miniature car moving along a rail generates a single trajectory of sound through a small speaker. As it moves, the sound continuously circulates and shifts within the space. The sound does not exist in a fixed form; it is perceived differently depending on movement and position.</p>
+      <p class="work-desc">According to where the audience stands and how the miniature car travels, the timbre and direction change, and even the same sound is transformed into distinct auditory experiences. The repeated motion forms a steady rhythm, yet subtle variations emerge over time. Within these shifts, the sound overlaps and misaligns, reorganizing itself into new configurations in space.</p>
     </div>
 
     <div class="work-item">
@@ -250,9 +253,8 @@ Sound Trajectory: Misalignment reveals how sound transforms and is perceived ov
         <img src="https://img.youtube.com/vi/Ad5arvYghTw/hqdefault.jpg" alt="Be Brave">
         <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
       </a>
-      <p class="work-desc">This piece was inspired by a cute pink flamingo plush toy that mimics speech and dances. The toy is fully dedicated to its simple functions, repeating its assigned roles. Watching it, I felt a certain resemblance to myself.
-Familiarity provides comfort and stability. Changing these familiar patterns is not easy, and sometimes, the need for change doesn’t even cross our minds. Change feels daunting and uncertain, often keeping us within the confines of what we know. Yet, I find myself wondering about the possibilities that lie beyond those limitations. What could I create if I stepped outside the familiar?
-One thing is certain—it would be more amusing than tedious. And so, I choose to Be Brave.</p>
+      <p class="work-desc">This piece was inspired by a cute pink flamingo plush toy that mimics speech and dances. The toy is fully dedicated to its simple functions, repeating its assigned roles. Watching it, I felt a certain resemblance to myself.</p>
+      <p class="work-desc">Familiarity provides comfort and stability. Changing these familiar patterns is not easy, and sometimes, the need for change doesn't even cross our minds. Yet, I find myself wondering about the possibilities that lie beyond those limitations. One thing is certain—it would be more amusing than tedious. And so, I choose to Be Brave.</p>
     </div>
 
     <div class="work-item">
@@ -262,16 +264,14 @@ One thing is certain—it would be more amusing than tedious. And so, I choose t
         <img src="https://img.youtube.com/vi/BVTsFKnkIfA/hqdefault.jpg" alt="Hyperfocus">
         <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
       </a>
-      <p class="work-desc">When deadlines are looming or when I need to accomplish something in a short span of time, I seem to exhibit almost superhuman abilities. I can completely block out surrounding noises and focus entirely, sometimes even producing better results than when I invest a lot of time. The thrill of achieving something through such intense concentration in a short period is truly exhilarating. My state of concentration felt akin to an "Impulse Wave." An "impulse" is a brief, sharp sound that emits powerful energy. In this piece, I utilized just one impulse as the source of sound. That impulse is showcased in various dazzling forms within the piece. This work was created for WFS (Wave Field Synthesis) and was produced using WFSCollider.</p>
+      <p class="work-desc">When deadlines are looming or when I need to accomplish something in a short span of time, I seem to exhibit almost superhuman abilities. My state of concentration felt akin to an "Impulse Wave." An "impulse" is a brief, sharp sound that emits powerful energy. In this piece, I utilized just one impulse as the source of sound. That impulse is showcased in various dazzling forms within the piece. This work was created for WFS (Wave Field Synthesis) and was produced using WFSCollider.</p>
     </div>
 
     <div class="work-item">
       <div class="work-title">Unplug</div>
       <div class="work-year">2024</div>
-      <img src="unplug.jpg" alt="Unplug" style="width:520px;height:auto;border-radius:4px;display:block;margin-bottom:14px;" onerror="this.style.display='none'">
-      <p class="work-desc">
-A digitized world, wherein your attention is a commodity. Focus is absorbed, and our senses overstimulated. You are the product. Remind yourself to unplug.
-</p>
+      <img src="unplug.jpg" alt="Unplug" class="work-img" onerror="this.style.display='none'">
+      <p class="work-desc">A digitized world, wherein your attention is a commodity. Focus is absorbed, and our senses overstimulated. You are the product. Remind yourself to unplug.</p>
     </div>
 
     <div class="work-item">
@@ -291,8 +291,7 @@ A digitized world, wherein your attention is a commodity. Focus is absorbed, and
         <img src="https://img.youtube.com/vi/oPUfBn-lAAs/hqdefault.jpg" alt="Engrave">
         <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
       </a>
-      <p class="work-desc">The piece "Engrave" began with an old video stored on my computer. This video evoked a distant yet warm emotion that I hadn't felt in a long time. Perhaps it was because I only recall these memories occasionally, but I composed this piece to revisit those nostalgic fragments in a way that I could always remember.
-This piece was composed using only the video and its original audio as the sole sound source.</p>
+      <p class="work-desc">The piece "Engrave" began with an old video stored on my computer. This video evoked a distant yet warm emotion that I hadn't felt in a long time. I composed this piece to revisit those nostalgic fragments in a way that I could always remember. This piece was composed using only the video and its original audio as the sole sound source.</p>
     </div>
 
     <div class="work-item">
@@ -302,7 +301,7 @@ This piece was composed using only the video and its original audio as the sole 
         <img src="https://img.youtube.com/vi/D-f0oX-l55M/hqdefault.jpg" alt="Almost Equal">
         <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
       </a>
-      <p class="work-desc">We sometimes criticize or judge others negatively, only to realize at some point that we share similarities with them. When I recognize that the actions I once condemned and the attitudes I once despised have unknowingly taken root within me, I am compelled to ask myself: Do I truly have the right to judge others? While we have an instinct to distinguish and evaluate people, in the end, we are all fundamentally alike.</p>
+      <p class="work-desc">We sometimes criticize or judge others negatively, only to realize at some point that we share similarities with them. When I recognize that the actions I once condemned and the attitudes I once despised have unknowingly taken root within me, I am compelled to ask myself: Do I truly have the right to judge others? In the end, we are all fundamentally alike.</p>
     </div>
 
     <div class="work-item">
@@ -312,7 +311,7 @@ This piece was composed using only the video and its original audio as the sole 
         <img src="https://img.youtube.com/vi/c2N2IxJ3lSQ/hqdefault.jpg" alt="Goal Setting">
         <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
       </a>
-      <p class="work-desc">Goal setting & Carrying On consists of three parts. The first implies the thoughtful process on the plans to be made, the second part implies the process of setting up the actual goal, and the third part implies the discipline whilst going through those times, which reconciles the feeling of accomplishment and failure. At the end of the piece, a figure from the first part reiterates, embracing that the cycle of setting goals will repeat. For the instrumentation, the full dynamic range of the snare drum was used in various techniques to incorporate different timbres from the instrument. The sound is processed real-time through MAX/MSP, and since the snare inherits lots of frequencies, various comb and band-pass filters were used. The delay time and delay of feedback level were used for the main parameters to output results from different frequency bands. Also, the spatial aspect of the piece derives within certain directions.</p>
+      <p class="work-desc">Goal Setting &amp; Carrying On consists of three parts. The first implies the thoughtful process on the plans to be made, the second part implies the process of setting up the actual goal, and the third part implies the discipline whilst going through those times, which reconciles the feeling of accomplishment and failure. At the end of the piece, a figure from the first part reiterates, embracing that the cycle of setting goals will repeat. For the instrumentation, the full dynamic range of the snare drum was used in various techniques. The sound is processed real-time through MAX/MSP.</p>
     </div>
 
     <div class="work-item">
@@ -322,7 +321,7 @@ This piece was composed using only the video and its original audio as the sole 
         <img src="https://img.youtube.com/vi/T2rQ-fjoO0Y/hqdefault.jpg" alt="Zing">
         <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
       </a>
-      <p class="work-desc">Zing: to move very quickly and make a humming sound.  Using max/msp, I made a sound synthesis patch of additive synthesis and frequency modulation (FM) and used various envelopes to directly create and use sound sources with different tones. I created Delay (tap delay), Filter, Modulator, and pitch shift within max/msp to focus on various sound changes and tones. I pursued the diversity of sounds by making an attempt to change the tone of the noise by using the algorithmic sound sources by making an algorithm patch, the beat phenomenon created by changing the pitch with a slightly different pitch to the same sound source, and using a filter for white noise. The movement of space, tension and relaxation, the consonant and the dissonant, and the contrast of textures were considered.</p>
+      <p class="work-desc">Zing: to move very quickly and make a humming sound. Using Max/MSP, I made a sound synthesis patch of additive synthesis and frequency modulation (FM) and used various envelopes to directly create and use sound sources with different tones. The movement of space, tension and relaxation, the consonant and the dissonant, and the contrast of textures were considered.</p>
     </div>
 
     <div class="work-item">
@@ -366,7 +365,7 @@ This piece was composed using only the video and its original audio as the sole 
   <div class="block-header"><div class="block-title">Contact</div><div class="block-star">✦</div></div>
   <div class="block-body"><div class="block-inner">
     <div class="contact-grid">
-      <div class="contact-cell"><div class="c-label">Email</div><div class="c-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4b382e38292a29320b252a3d2e3965282426">[email&#160;protected]</a></div></div>
+      <div class="contact-cell"><div class="c-label">Email</div><div class="c-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dba8bea8b9bab9a29bb5baadbea9f5b8b4b6">[email&#160;protected]</a></div></div>
       <div class="contact-cell"><div class="c-label">Instagram</div><div class="c-val">@comp._.silversssong</div></div>
       <div class="contact-cell"><div class="c-label">Location</div><div class="c-val">Incheon / Seoul, Korea</div></div>
     </div>
@@ -374,14 +373,6 @@ This piece was composed using only the video and its original audio as the sole 
 </div>
 
 </div>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" defer></script><script>
 document.querySelectorAll('.block').forEach(block=>{
-  block.querySelector('.block-header').addEventListener('click',()=>{
-    const isOpen=block.classList.contains('open');
-    document.querySelectorAll('.block').forEach(b=>b.classList.remove('open'));
-    if(!isOpen) block.classList.add('open');
-  });
-});
-</script>
-</body>
-</html>
+  block.querySelector('.block-header').addEventL
