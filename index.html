@@ -406,7 +406,7 @@ body{font-family:'DM Sans',sans-serif;}
   <div class="block-header"><div class="block-title">Contact</div><div class="block-star">✦</div></div>
   <div class="block-body"><div class="block-inner">
     <div class="contact-grid">
-      <div class="contact-cell"><div class="c-label">Email</div><div class="c-val">sesbaby@naver.com</div></div>
+      <div class="contact-cell"><div class="c-label">Email</div><div class="c-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="94e7f1e7f6f5f6edd4faf5e2f1e6baf7fbf9">[email&#160;protected]</a></div></div>
       <div class="contact-cell"><div class="c-label">Instagram</div><div class="c-val"><a href="https://www.instagram.com/comp._.silversssong/" target="_blank">@comp._.silversssong</a></div></div>
       <div class="contact-cell"><div class="c-label">Location</div><div class="c-val">Incheon / Seoul, Korea</div></div>
     </div>
@@ -415,43 +415,73 @@ body{font-family:'DM Sans',sans-serif;}
 
 </div>
 
-<script>
-// Accordion
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" defer></script><script>
+// Accordion — works on both desktop click and mobile touch
 document.querySelectorAll('.block').forEach(block => {
-  block.querySelector('.block-header').addEventListener('click', () => {
+  const header = block.querySelector('.block-header');
+  function toggle(e) {
+    e.preventDefault();
     const isOpen = block.classList.contains('open');
     document.querySelectorAll('.block').forEach(b => b.classList.remove('open'));
     if (!isOpen) block.classList.add('open');
-  });
+  }
+  header.addEventListener('click', toggle);
+  header.addEventListener('touchend', toggle);
 });
 
-// Don't click chaos
+// Fix email
+const emailCells = document.querySelectorAll('.c-val');
+emailCells.forEach(cell => {
+  if (cell.textContent.includes('protected')) cell.textContent = 'sesbaby@naver.com';
+});
+
+// Don't click — flying dog
 const dontBtn = document.getElementById('dontBtn');
 let chaosActive = false;
-let stopBtn = null;
-let flyInterval = null;
-let flashInterval = null;
+let stopEl = null;
+let dogEls = [];
+let flyIntervals = [];
 let audioCtx = null;
-let audioSource = null;
+
+function spawnDog() {
+  const dog = document.createElement('img');
+  dog.src = 'yang.png';
+  dog.style.cssText = 'position:fixed;width:120px;height:120px;object-fit:cover;border-radius:50%;z-index:9998;pointer-events:none;border:3px solid #FBB728;';
+  document.body.appendChild(dog);
+  dogEls.push(dog);
+
+  let x = Math.random() * (window.innerWidth - 120);
+  let y = Math.random() * (window.innerHeight - 120);
+  let vx = (Math.random() * 5 + 3) * (Math.random() < 0.5 ? 1 : -1);
+  let vy = (Math.random() * 5 + 3) * (Math.random() < 0.5 ? 1 : -1);
+
+  const interval = setInterval(() => {
+    x += vx; y += vy;
+    if (x < 0 || x > window.innerWidth - 120) vx *= -1;
+    if (y < 0 || y > window.innerHeight - 120) vy *= -1;
+    dog.style.left = x + 'px';
+    dog.style.top = y + 'px';
+  }, 16);
+  flyIntervals.push(interval);
+}
 
 function startChaos() {
   if (chaosActive) return;
   chaosActive = true;
 
-  // Web Audio API — simple noise burst since we can't load external wav
+  // Audio noise
   audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   function playNoise() {
     if (!chaosActive) return;
     const bufferSize = audioCtx.sampleRate * 0.4;
     const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
     const data = buffer.getChannelData(0);
-    for (let i = 0; i < bufferSize; i++) data[i] = (Math.random() * 2 - 1) * 0.3;
+    for (let i = 0; i < bufferSize; i++) data[i] = (Math.random() * 2 - 1) * 0.2;
     const src = audioCtx.createBufferSource();
     src.buffer = buffer;
-    // add some resonance
     const filter = audioCtx.createBiquadFilter();
     filter.type = 'bandpass';
-    filter.frequency.value = 200 + Math.random() * 800;
+    filter.frequency.value = 300 + Math.random() * 600;
     src.connect(filter);
     filter.connect(audioCtx.destination);
     src.start();
@@ -459,47 +489,45 @@ function startChaos() {
   }
   playNoise();
 
-  // Flash body
-  flashInterval = setInterval(() => {
-    const colors = ['#F06B04','#FBB728','#F5ECD2','#2C9FC7','#1570AC','#A1091E'];
-    document.body.style.background = colors[Math.floor(Math.random() * colors.length)];
-  }, 120);
+  // Spawn multiple dogs
+  for (let i = 0; i < 5; i++) setTimeout(spawnDog, i * 300);
 
   // Flying stop button
-  stopBtn = document.createElement('button');
-  stopBtn.className = 'stop-btn';
-  stopBtn.textContent = 'Stop';
-  document.body.appendChild(stopBtn);
+  stopEl = document.createElement('button');
+  stopEl.className = 'stop-btn';
+  stopEl.textContent = 'Stop';
+  document.body.appendChild(stopEl);
 
-  let vx = (Math.random() * 4 + 3) * (Math.random() < 0.5 ? 1 : -1);
-  let vy = (Math.random() * 4 + 3) * (Math.random() < 0.5 ? 1 : -1);
-  let x = window.innerWidth / 2;
-  let y = window.innerHeight / 2;
-
-  flyInterval = setInterval(() => {
-    x += vx;
-    y += vy;
-    if (x < 0 || x > window.innerWidth - 80) vx *= -1;
-    if (y < 0 || y > window.innerHeight - 44) vy *= -1;
-    stopBtn.style.left = x + 'px';
-    stopBtn.style.top = y + 'px';
+  let sx = window.innerWidth / 2, sy = window.innerHeight / 2;
+  let svx = (Math.random() * 4 + 4) * (Math.random() < 0.5 ? 1 : -1);
+  let svy = (Math.random() * 4 + 4) * (Math.random() < 0.5 ? 1 : -1);
+  const stopInterval = setInterval(() => {
+    sx += svx; sy += svy;
+    if (sx < 0 || sx > window.innerWidth - 80) svx *= -1;
+    if (sy < 0 || sy > window.innerHeight - 44) svy *= -1;
+    stopEl.style.left = sx + 'px';
+    stopEl.style.top = sy + 'px';
   }, 16);
+  flyIntervals.push(stopInterval);
 
-  stopBtn.addEventListener('click', stopChaos);
+  stopEl.addEventListener('click', stopChaos);
+  stopEl.addEventListener('touchend', stopChaos);
   dontBtn.textContent = "I said don't...";
 }
 
 function stopChaos() {
   chaosActive = false;
-  clearInterval(flashInterval);
-  clearInterval(flyInterval);
-  document.body.style.background = '';
-  if (stopBtn) { stopBtn.remove(); stopBtn = null; }
+  flyIntervals.forEach(clearInterval);
+  flyIntervals = [];
+  dogEls.forEach(d => d.remove());
+  dogEls = [];
+  if (stopEl) { stopEl.remove(); stopEl = null; }
   if (audioCtx) { audioCtx.close(); audioCtx = null; }
   dontBtn.textContent = "Don't click";
 }
 
 dontBtn.addEventListener('click', startChaos);
+dontBtn.addEventListener('touchend', e => { e.preventDefault(); startChaos(); });
 </script>
 </body>
 </html>
