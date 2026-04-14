@@ -128,6 +128,25 @@ body{font-family:'DM Sans',sans-serif;}
   .contact-cell:nth-child(n+3){border-top:none;}
   .contact-cell{padding:16px 0;}
 }
+
+/* QUIZ */
+.b-quiz{background:#F06B04;}
+.b-quiz .block-title,.b-quiz .block-star{color:#FBB728;}
+.quiz-intro{font-size:14px;color:#F5ECD2;line-height:1.7;margin-bottom:28px;font-style:italic;}
+.quiz-questions{display:flex;flex-direction:column;gap:20px;}
+.quiz-q{display:flex;flex-direction:column;gap:8px;}
+.quiz-label{font-size:13px;font-weight:500;color:#FBB728;letter-spacing:0.3px;}
+.quiz-input{background:rgba(245,236,210,0.1);border:1.5px solid rgba(251,183,40,0.4);border-radius:4px;padding:10px 14px;font-size:14px;color:#F5ECD2;font-family:'DM Sans',sans-serif;outline:none;width:100%;max-width:320px;}
+.quiz-input:focus{border-color:#FBB728;}
+.quiz-input::placeholder{color:rgba(245,236,210,0.3);}
+.quiz-btn{margin-top:8px;width:fit-content;padding:12px 28px;background:#FBB728;color:#F06B04;font-family:'Playfair Display',serif;font-size:16px;font-weight:900;font-style:italic;border:none;border-radius:4px;cursor:pointer;transition:opacity 0.15s;}
+.quiz-btn:hover{opacity:0.85;}
+.quiz-msg{font-size:13px;margin-top:12px;color:#F5ECD2;min-height:20px;}
+.quiz-msg.wrong{color:rgba(245,236,210,0.6);}
+.yang-header{font-family:'Playfair Display',serif;font-size:28px;font-style:italic;font-weight:900;color:#FBB728;margin-bottom:20px;}
+.yang-photo{width:260px;height:260px;object-fit:cover;border-radius:50%;border:3px solid #FBB728;display:block;margin-bottom:20px;}
+.yang-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:#F5ECD2;margin-bottom:8px;}
+.yang-desc{font-size:14px;color:rgba(245,236,210,0.75);line-height:1.7;}
 </style>
 </head>
 <body>
@@ -391,24 +410,46 @@ body{font-family:'DM Sans',sans-serif;}
   </div></div>
 </div>
 
-<!-- PLACEHOLDER -->
-<div class="block b4" data-block="4">
-  <div class="block-header"><div class="block-title">— — —</div><div class="block-star">✦</div></div>
-  <div class="block-body"><div class="block-inner">
-    <div class="b4-inner">
-      <button class="dont-btn" id="dontBtn">Don't click</button>
-    </div>
-  </div></div>
-</div>
-
 <!-- CONTACT -->
 <div class="block b5" data-block="5">
   <div class="block-header"><div class="block-title">Contact</div><div class="block-star">✦</div></div>
   <div class="block-body"><div class="block-inner">
     <div class="contact-grid">
-      <div class="contact-cell"><div class="c-label">Email</div><div class="c-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="94e7f1e7f6f5f6edd4faf5e2f1e6baf7fbf9">[email&#160;protected]</a></div></div>
+      <div class="contact-cell"><div class="c-label">Email</div><div class="c-val">sesbaby@naver.com</div></div>
       <div class="contact-cell"><div class="c-label">Instagram</div><div class="c-val"><a href="https://www.instagram.com/comp._.silversssong/" target="_blank">@comp._.silversssong</a></div></div>
       <div class="contact-cell"><div class="c-label">Location</div><div class="c-val">Incheon / Seoul, Korea</div></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- QUIZ -->
+<div class="block b-quiz" data-block="quiz">
+  <div class="block-header"><div class="block-title">Quiz</div><div class="block-star">✦</div></div>
+  <div class="block-body"><div class="block-inner">
+    <div id="quiz-wrap">
+      <div class="quiz-intro">Think you know Eunsong? Answer 3 questions to find out.</div>
+      <div class="quiz-questions">
+        <div class="quiz-q">
+          <label class="quiz-label">1. What is her favorite color?</label>
+          <input class="quiz-input" id="q1" type="text" placeholder="your answer" autocomplete="off">
+        </div>
+        <div class="quiz-q">
+          <label class="quiz-label">2. What is her favorite number?</label>
+          <input class="quiz-input" id="q2" type="text" placeholder="your answer" autocomplete="off">
+        </div>
+        <div class="quiz-q">
+          <label class="quiz-label">3. What is her favorite season?</label>
+          <input class="quiz-input" id="q3" type="text" placeholder="your answer" autocomplete="off">
+        </div>
+        <button class="quiz-btn" id="quizSubmit">Submit</button>
+        <div class="quiz-msg" id="quizMsg"></div>
+      </div>
+      <div id="yang-reveal" style="display:none;">
+        <div class="yang-header">You got it right!</div>
+        <img src="yang.png" alt="Yang" class="yang-photo">
+        <div class="yang-name">Meet Yang</div>
+        <div class="yang-desc">소개글을 작성해주세요 :)</div>
+      </div>
     </div>
   </div></div>
 </div>
@@ -416,7 +457,7 @@ body{font-family:'DM Sans',sans-serif;}
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" defer></script><script>
-// Accordion — works on both desktop click and mobile touch
+// Accordion
 document.querySelectorAll('.block').forEach(block => {
   const header = block.querySelector('.block-header');
   function toggle(e) {
@@ -429,10 +470,26 @@ document.querySelectorAll('.block').forEach(block => {
   header.addEventListener('touchend', toggle);
 });
 
-// Fix email
-const emailCells = document.querySelectorAll('.c-val');
-emailCells.forEach(cell => {
-  if (cell.textContent.includes('protected')) cell.textContent = 'sesbaby@naver.com';
+// Quiz
+const answers = { q1: 'yellow', q2: '3', q3: 'winter' };
+document.getElementById('quizSubmit').addEventListener('click', () => {
+  const a1 = document.getElementById('q1').value.trim().toLowerCase();
+  const a2 = document.getElementById('q2').value.trim().toLowerCase();
+  const a3 = document.getElementById('q3').value.trim().toLowerCase();
+  const msg = document.getElementById('quizMsg');
+  if (a1 === answers.q1 && a2 === answers.q2 && a3 === answers.q3) {
+    document.querySelector('.quiz-questions').style.display = 'none';
+    document.querySelector('.quiz-intro').style.display = 'none';
+    document.getElementById('yang-reveal').style.display = 'block';
+  } else {
+    msg.textContent = 'Not quite... try again!';
+    msg.className = 'quiz-msg wrong';
+    document.querySelectorAll('.quiz-input').forEach((inp, i) => {
+      const keys = ['q1','q2','q3'];
+      const vals = [a1,a2,a3];
+      inp.style.borderColor = vals[i] === answers[keys[i]] ? '#FBB728' : 'rgba(255,100,100,0.6)';
+    });
+  }
 });
 
 // Don't click — flying dog
@@ -449,12 +506,10 @@ function spawnDog() {
   dog.style.cssText = 'position:fixed;width:120px;height:120px;object-fit:cover;border-radius:50%;z-index:9998;pointer-events:none;border:3px solid #FBB728;';
   document.body.appendChild(dog);
   dogEls.push(dog);
-
   let x = Math.random() * (window.innerWidth - 120);
   let y = Math.random() * (window.innerHeight - 120);
   let vx = (Math.random() * 5 + 3) * (Math.random() < 0.5 ? 1 : -1);
   let vy = (Math.random() * 5 + 3) * (Math.random() < 0.5 ? 1 : -1);
-
   const interval = setInterval(() => {
     x += vx; y += vy;
     if (x < 0 || x > window.innerWidth - 120) vx *= -1;
@@ -468,8 +523,6 @@ function spawnDog() {
 function startChaos() {
   if (chaosActive) return;
   chaosActive = true;
-
-  // Audio noise
   audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   function playNoise() {
     if (!chaosActive) return;
@@ -488,16 +541,11 @@ function startChaos() {
     src.onended = () => { if (chaosActive) playNoise(); };
   }
   playNoise();
-
-  // Spawn multiple dogs
   for (let i = 0; i < 5; i++) setTimeout(spawnDog, i * 300);
-
-  // Flying stop button
   stopEl = document.createElement('button');
   stopEl.className = 'stop-btn';
   stopEl.textContent = 'Stop';
   document.body.appendChild(stopEl);
-
   let sx = window.innerWidth / 2, sy = window.innerHeight / 2;
   let svx = (Math.random() * 4 + 4) * (Math.random() < 0.5 ? 1 : -1);
   let svy = (Math.random() * 4 + 4) * (Math.random() < 0.5 ? 1 : -1);
@@ -509,7 +557,6 @@ function startChaos() {
     stopEl.style.top = sy + 'px';
   }, 16);
   flyIntervals.push(stopInterval);
-
   stopEl.addEventListener('click', stopChaos);
   stopEl.addEventListener('touchend', stopChaos);
   dontBtn.textContent = "I said don't...";
@@ -526,8 +573,10 @@ function stopChaos() {
   dontBtn.textContent = "Don't click";
 }
 
-dontBtn.addEventListener('click', startChaos);
-dontBtn.addEventListener('touchend', e => { e.preventDefault(); startChaos(); });
+if (dontBtn) {
+  dontBtn.addEventListener('click', startChaos);
+  dontBtn.addEventListener('touchend', e => { e.preventDefault(); startChaos(); });
+}
 </script>
 </body>
 </html>
