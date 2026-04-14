@@ -446,9 +446,9 @@ body{font-family:'DM Sans',sans-serif;}
       </div>
       <div id="yang-reveal" style="display:none;">
         <div class="yang-header">You got it right!</div>
-        <img src="yang.png" alt="Yang" class="yang-photo">
-        <div class="yang-name">Meet Yang</div>
-        <div class="yang-desc">소개글을 작성해주세요 :)</div>
+        <img src="yang.jpg" alt="Yang" class="yang-photo">
+        <div class="yang-name">Yang</div>
+        <div class="yang-desc">Oh… you passed the quiz?<br>Fine. I guess you earned this.<br><br>Hi. I'm Yang, Eunsong's dog. Yes, <em>the</em> Yang.<br>Born on May 9, 2012. A legend, basically. I enjoy squeaky toys, plushies, snacks… and obviously chicken and cabbage (don't mess this up).<br><br>My daily routine? Sleep. Nap. Nap again. Also being carried outside like the royalty I am.<br><br>And just so you know— I'm extremely cute. Like, unfairly cute.<br><br>You're welcome for this experience.</div>
       </div>
     </div>
   </div></div>
@@ -502,7 +502,7 @@ let audioCtx = null;
 
 function spawnDog() {
   const dog = document.createElement('img');
-  dog.src = 'yang.png';
+  dog.src = 'yang.jpg';
   dog.style.cssText = 'position:fixed;width:120px;height:120px;object-fit:cover;border-radius:50%;z-index:9998;pointer-events:none;border:3px solid #FBB728;';
   document.body.appendChild(dog);
   dogEls.push(dog);
